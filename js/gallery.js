@@ -89,10 +89,12 @@ gallery.addEventListener("click", handle);
 
 function handle(event) {
   event.preventDefault();
-  const originalUrl = event.target.getAttribute("data-source");
   if (event.target.classList.contains("gallery-image")) {
-    console.log(originalUrl);
+    const originalUrl = event.target.getAttribute("data-source");
+    if (originalUrl) {
+      console.log(originalUrl);
+      const instance = basicLightbox.create(`<img src='${originalUrl}' />`);
+      instance.show();
+    }
   }
-  const instance = basicLightbox.create(`<img src='${originalUrl}' />`);
-  instance.show();
 }
